@@ -31,11 +31,10 @@ jobs:
     - name: Gen key
       run: |
         python MobaXterm-Keygen.py ${{ github.event.inputs.key_name }} ${{ github.event.inputs.key_version }}
-        mv /home/runner/work/MobaXterm-Keygen/MobaXterm-Keygen/Custom.mxtpro /home/runner/build/reports/
     
     - name: Publish reports
       if: always()
       uses: actions/upload-artifact@v2
       with:
         name: Custom.mxtpro
-        path: runner/build/reports/
+        path: runner/work/MobaXterm-Keygen/MobaXterm-Keygen/
