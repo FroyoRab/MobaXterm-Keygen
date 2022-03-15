@@ -27,6 +27,14 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: "3.10"
-    - name: Get key
+    
+    - name: Gen key
       run: |
         python MobaXterm-Keygen.py ${{ github.event.inputs.key_name }} ${{ github.event.inputs.key_version }}
+    
+    - name: Publish reports
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: Custom.mxtpro
+        path: runner/build/reports/
